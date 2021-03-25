@@ -1,0 +1,163 @@
+<Gerenciador>:
+    Menu:
+        name:'menu'
+
+    Caixa:
+        name:'caixa'
+
+    Contas:
+        name: 'contas'
+
+    Graficos:
+        name:'graficos'
+
+    Agenda:
+        name:'agenda'
+
+<Menu>
+    BoxLayout:
+        orientation:'vertical'
+        padding: 100
+        spacing: 10
+        Image:
+            source: 'LOGO-CLUBE-DO-HOMEM.png'
+            size_hint_y:None
+            height:200
+            allow_stretch:True
+        Button:
+            text:'Caixa'
+            font_size:30
+            on_release:app.root.current = 'caixa'
+        Button:
+            text:'Contas a Pagar'
+            font_size:30
+            on_release:app.root.current = 'contas'
+        Button:
+            text:'Metricas'
+            font_size:30
+            on_release:app.root.current = 'graficos'
+        Button:
+            text:'Agenda'
+            font_size:30
+            on_release:app.root.current = 'agenda'
+        Button:
+            text:'Sair'
+            font_size:30
+            on_release:app.stop()
+<Caixa>
+    BoxLayout:
+        orientation:'vertical'
+
+        ActionBar:
+            size_hint_y:None
+            height:100
+            ActionView:
+                ActionPrevious:
+                    title:'Caixa'
+                    font_size:30
+                    on_release:app.root.current = 'menu'
+
+                ActionButton:
+                    text:'Sair'
+                    font_size:30
+                    on_release:app.stop()
+        BoxLayout:
+
+<Contas>:
+    BoxLayout:
+        orientation:'vertical'
+
+        ActionBar:
+            size_hint_y:None
+            height:100
+            ActionView:
+                ActionPrevious:
+                    title:'Contas a Pagar'
+                    font_size:30
+                    on_release:app.root.current = 'menu'
+
+                ActionButton:
+                    text:'Sair'
+                    font_size:30
+                    on_release:app.stop()
+
+        BoxLayout:
+            size_hint_y:None
+            height:100
+            Button:
+                size_hint_x:None
+                width:60
+                text:'LISTA'
+                on_release:root.mostrarWidget()
+            TextInput:
+                id:texto
+                font_size:70
+            Button:
+                size_hint_x:None
+                width:60
+                text:'+'
+                on_release:root.addTarefa()
+
+
+        BoxLayout:
+            ScrollView:
+                BoxLayout:
+                    id:box
+                    orientation:'vertical'
+                    size_hint_y:None
+                    height:self.minimum_height
+
+
+
+
+
+<Tarefa>:
+    size_hint_y:None
+    height:200
+    Label:
+        id:label
+        font_size:30
+    Button:
+        text:'X'
+        size_hint_x: None
+        width:60
+        on_press:root.apagaWidget()
+        on_release:app.root.get_screen('contas').ids.box.remove_widget(root)
+
+<Graficos>
+    BoxLayout:
+        orientation:'vertical'
+
+        ActionBar:
+            size_hint_y:None
+            height:100
+            ActionView:
+                ActionPrevious:
+                    title:'Graficos'
+                    font_size:30
+                    on_release:app.root.current = 'menu'
+
+                ActionButton:
+                    text:'Sair'
+                    font_size:30
+                    on_release:app.stop()
+        BoxLayout:
+
+<Agenda>
+    BoxLayout:
+        orientation:'vertical'
+
+        ActionBar:
+            size_hint_y:None
+            height:100
+            ActionView:
+                ActionPrevious:
+                    title:'Agenda'
+                    font_size:30
+                    on_release:app.root.current = 'menu'
+
+                ActionButton:
+                    text:'Sair'
+                    font_size:30
+                    on_release:app.stop()
+        BoxLayout:
