@@ -18,11 +18,11 @@
     BoxLayout:
         orientation:'vertical'
         padding: 100
-        spacing: 10
+        spacing: 50
         Image:
             source: 'LOGO-CLUBE-DO-HOMEM.png'
             size_hint_y:None
-            height:200
+            height:300
             allow_stretch:True
         Button:
             text:'Caixa'
@@ -33,7 +33,7 @@
             font_size:30
             on_release:app.root.current = 'contas'
         Button:
-            text:'Metricas'
+            text:'Gráficos'
             font_size:30
             on_release:app.root.current = 'graficos'
         Button:
@@ -62,6 +62,28 @@
                     font_size:30
                     on_release:app.stop()
         BoxLayout:
+            size_hint_y:None
+            height:100
+            Button:
+                size_hint_x:None
+                width:200
+                text:'Saida'
+
+            TextInput:
+                id:texto
+                font_size:70
+            Button:
+                size_hint_x:None
+                width:200
+                text:'Entrada'
+
+        BoxLayout:
+            ScrollView:
+                BoxLayout:
+                    id:box
+                    orientation:'vertical'
+                    size_hint_y:None
+                    height:self.minimum_height
 
 <Contas>:
     BoxLayout:
@@ -83,10 +105,10 @@
 
         BoxLayout:
             size_hint_y:None
-            height:100
+            height:200
             Button:
                 size_hint_x:None
-                width:60
+                width:200
                 text:'LISTA'
                 on_release:root.mostrarWidget()
             TextInput:
@@ -94,7 +116,7 @@
                 font_size:70
             Button:
                 size_hint_x:None
-                width:60
+                width:200
                 text:'+'
                 on_release:root.addTarefa()
 
